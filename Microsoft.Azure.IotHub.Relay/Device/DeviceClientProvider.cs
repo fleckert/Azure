@@ -1,8 +1,8 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.Azure.Devices;
+﻿using Microsoft.Azure.Devices;
 using Microsoft.Azure.Devices.Client;
 using Microsoft.Azure.Helper;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.IotHub.Relay.Device
 {
@@ -25,14 +25,15 @@ namespace Microsoft.Azure.IotHub.Relay.Device
 
         public async Task<DeviceClient> GetDeviceClientAsync(string deviceId, CancellationToken cancellationToken)
         {
-            Microsoft.Azure.Devices.Device device = await _registryManager.GetDeviceAsync(deviceId, cancellationToken)
-                                                 ?? await _registryManager.AddDeviceAsync(new Microsoft.Azure.Devices.Device(deviceId), cancellationToken);
+            Microsoft.Azure.Devices.Device device
+                = await _registryManager.GetDeviceAsync(deviceId, cancellationToken) ??
+                  await _registryManager.AddDeviceAsync(new Microsoft.Azure.Devices.Device(deviceId), cancellationToken);
 
             DeviceClient deviceClient = DeviceClient.Create(
-                hostname: _hostname,
-                authenticationMethod: new DeviceAuthenticationWithRegistrySymmetricKey(
-                    deviceId: deviceId,
-                    key: device.Authentication.SymmetricKey.PrimaryKey
+                hostname : _hostname,
+                authenticationMethod : new DeviceAuthenticationWithRegistrySymmetricKey(
+                    deviceId : deviceId,
+                    key : device.Authentication.SymmetricKey.PrimaryKey
                 )
             );
 

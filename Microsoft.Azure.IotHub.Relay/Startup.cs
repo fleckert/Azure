@@ -8,6 +8,8 @@ namespace Microsoft.Azure.IotHub.Relay
 {
     public class Startup
     {
+        string _connectionString = @"HostName=<fill_in>.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=<fill_in>";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -17,9 +19,8 @@ namespace Microsoft.Azure.IotHub.Relay
 
         public void ConfigureServices(IServiceCollection services)
         {
-            string connectionString = @"HostName=fleckert.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=DCSdzC+j+im/xaEgRLw7x0P/56+seZoKg6yIgQMKgME=";
 
-            services.AddSingleton<IDeviceClientProvider>(new DeviceClientCache(new DeviceClientProvider(connectionString)));
+            services.AddSingleton<IDeviceClientProvider>(new DeviceClientCache(new DeviceClientProvider(_connectionString)));
 			services.AddSingleton<IMessageSender, MessageSender>();
             services.AddMvc();
         }

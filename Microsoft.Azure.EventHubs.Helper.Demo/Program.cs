@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Microsoft.Azure.EventHubs.Processor;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Azure.EventHubs.Processor;
 
 namespace Microsoft.Azure.EventHubs.Helper.Demo
 {

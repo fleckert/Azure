@@ -1,6 +1,6 @@
-﻿using System.Threading;
+﻿using Microsoft.Azure.Devices.Client;
+using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Devices.Client;
 
 namespace Microsoft.Azure.IotHub.Relay.Device
 {
