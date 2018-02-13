@@ -1,6 +1,6 @@
-﻿using System;
-using System.Threading.Tasks;
+using System;
 using Microsoft.Azure.EventHubs.Processor;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.EventHubs.Helper
 {
@@ -18,7 +18,7 @@ namespace Microsoft.Azure.EventHubs.Helper
         /// <param name="storageConnectionString">Storage connection string for check pointing.</param>
         /// <param name="leaseContainerName">Lease container name  for check pointing.</param>
         /// <param name="getEventProcessor">A <see cref="Func{T}"/> to get a <see cref="IEventProcessor"/> instance.</param>
-		/// <param name="consumerGroupName">Consumer group name. Defaults to '$Default'.</param>
+        /// <param name="consumerGroupName">Consumer group name. Defaults to '$Default'.</param>
         /// <param name="hostName">If value is null, a new Guid is used.</param>
         /// <param name="storageBlobPrefix">Storage BLOB prefix. Defaults to 'null'.</param>
         /// <param name="partitionManagerLeaseDurationInSeconds">see EventProcessorHost.PartitionManagerOptions.LeaseDuration, defaults to '30'.</param>
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.EventHubs.Helper
             string storageConnectionString,
             string leaseContainerName,
             Func<IEventProcessor> getEventProcessor,
-			string consumerGroupName = "$Default",
+            string consumerGroupName = "$Default",
             string hostName = null,
             string storageBlobPrefix = null,
             int partitionManagerLeaseDurationInSeconds = 30,
@@ -45,20 +45,20 @@ namespace Microsoft.Azure.EventHubs.Helper
         {
             _eventProcessorHost
             = new EventProcessorHost(
-                    hostName ?? Guid.NewGuid().ToString(),
-                    default(string),//eventHubPath,
-                    consumerGroupName,
-                    eventHubConnectionString,
-                    storageConnectionString,
-                    leaseContainerName,
-                    storageBlobPrefix)
+            hostName ?? Guid.NewGuid().ToString(),
+            default(string), //eventHubPath,
+            consumerGroupName,
+            eventHubConnectionString,
+            storageConnectionString,
+            leaseContainerName,
+            storageBlobPrefix)
+            {
+                PartitionManagerOptions = new PartitionManagerOptions
                 {
-                    PartitionManagerOptions = new PartitionManagerOptions
-                    {
-                        LeaseDuration = TimeSpan.FromSeconds(partitionManagerLeaseDurationInSeconds),
-                        RenewInterval = TimeSpan.FromSeconds(partitionManagerRenewIntervalInSeconds)
-                    }
-                };
+                    LeaseDuration = TimeSpan.FromSeconds(partitionManagerLeaseDurationInSeconds),
+                    RenewInterval = TimeSpan.FromSeconds(partitionManagerRenewIntervalInSeconds)
+                }
+            };
 
             _eventProcessorFactory = new EventProcessorFactory(getEventProcessor);
 
@@ -71,11 +71,9 @@ namespace Microsoft.Azure.EventHubs.Helper
             };
         }
 
-        public Task RegisterEventProcessorFactoryAsync()
-            => _eventProcessorHost.RegisterEventProcessorFactoryAsync(_eventProcessorFactory, _eventProcessorOptions);
+        public Task RegisterEventProcessorFactoryAsync() => _eventProcessorHost.RegisterEventProcessorFactoryAsync(_eventProcessorFactory, _eventProcessorOptions);
 
-        public Task UnregisterEventProcessorAsync()
-            => _eventProcessorHost.UnregisterEventProcessorAsync();
+        public Task UnregisterEventProcessorAsync() => _eventProcessorHost.UnregisterEventProcessorAsync();
 
         class EventProcessorFactory : IEventProcessorFactory
         {

@@ -1,7 +1,4 @@
-﻿using Microsoft.Azure.EventHubs.Processor;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 using System.Threading.Tasks;
 
 namespace Microsoft.Azure.EventHubs.Helper.Demo
@@ -11,10 +8,14 @@ namespace Microsoft.Azure.EventHubs.Helper.Demo
         static async Task Main()
         {
             Microsoft.Azure.EventHubs.Helper.EventProcessorHostWrapper eventProcessorHostWrapper = new Microsoft.Azure.EventHubs.Helper.EventProcessorHostWrapper(
-                eventHubConnectionString: @"Endpoint=sb://<fill_in>.servicebus.windows.net/;SharedAccessKeyName=<fill_in>;SharedAccessKey=<fill_in>;EntityPath=<fill_in>",
-                storageConnectionString: @"DefaultEndpointsProtocol=https;AccountName=<fill_in>;AccountKey=<fill_in>;EndpointSuffix=core.windows.net",
-                leaseContainerName: "<fill_in>",
-                getEventProcessor: () => new ConsoleLoggerEventProcessor()
+                eventHubConnectionString: @"Endpoint=sb://ihsuprodamres088dednamespace.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=R5M48NLlxESkgZQoOfMhqquJaBzNp0CwtV2rvSVAGwg=;EntityPath=iothub-ehub-fleckert-345306-f14a5f5c63",
+                storageConnectionString: @"DefaultEndpointsProtocol=https;AccountName=iothubrelay;AccountKey=fgnzJwaNUuWWybGPaxz9CX6dd6w2Hugcn+r5Rgz8QBGZN5aPRtqn3i9guknbnYQawdCkF8u/prq+GWMrxPMhLw==;EndpointSuffix=core.windows.net",
+                leaseContainerName: "demo0",
+                getEventProcessor: () => new EventHubForwarderEventProcessor(
+                    @"Endpoint=sb://fleckert.servicebus.windows.net/;SharedAccessKeyName=Send;SharedAccessKey=NhKNaJ5dMzgynk3ktBZwS4jLCFq5AeRbdMQG4dy5D5s=;EntityPath=data",
+                    _ => _.Properties["iothub-connection-device-id"].ToString(),
+                    256 * 1024
+                )
             );
 
             await eventProcessorHostWrapper.RegisterEventProcessorFactoryAsync();

@@ -8,7 +8,7 @@ namespace Microsoft.Azure.IotHub.Relay
 {
     public class Startup
     {
-        string _connectionString = @"HostName=<fill_in>.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=<fill_in>";
+        string _connectionString = @"HostName=fleckert.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=R5M48NLlxESkgZQoOfMhqquJaBzNp0CwtV2rvSVAGwg=";
 
         public Startup(IConfiguration configuration)
         {
