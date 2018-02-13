@@ -1,0 +1,35 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Azure.EventHubs.Helper", "Microsoft.Azure.EventHubs.Helper\Microsoft.Azure.EventHubs.Helper.csproj", "{1FBEDE44-1E80-4BAC-B2C0-6403CA669B45}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Azure.EventHubs.Helper.Demo", "Microsoft.Azure.EventHubs.Helper.Demo\Microsoft.Azure.EventHubs.Helper.Demo.csproj", "{BF290412-0FCF-4EE3-9AD3-05DA0C98C8E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Azure.Helper", "Microsoft.Azure.Helper\Microsoft.Azure.Helper.csproj", "{66997934-AA10-4515-A188-DDE9723B6C0E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Azure.IotHub.Relay", "Microsoft.Azure.IotHub.Relay\Microsoft.Azure.IotHub.Relay.csproj", "{A7C5EF1D-1793-4364-8958-85568A218C91}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1FBEDE44-1E80-4BAC-B2C0-6403CA669B45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FBEDE44-1E80-4BAC-B2C0-6403CA669B45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FBEDE44-1E80-4BAC-B2C0-6403CA669B45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FBEDE44-1E80-4BAC-B2C0-6403CA669B45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF290412-0FCF-4EE3-9AD3-05DA0C98C8E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF290412-0FCF-4EE3-9AD3-05DA0C98C8E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF290412-0FCF-4EE3-9AD3-05DA0C98C8E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF290412-0FCF-4EE3-9AD3-05DA0C98C8E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66997934-AA10-4515-A188-DDE9723B6C0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66997934-AA10-4515-A188-DDE9723B6C0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66997934-AA10-4515-A188-DDE9723B6C0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66997934-AA10-4515-A188-DDE9723B6C0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7C5EF1D-1793-4364-8958-85568A218C91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7C5EF1D-1793-4364-8958-85568A218C91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7C5EF1D-1793-4364-8958-85568A218C91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7C5EF1D-1793-4364-8958-85568A218C91}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
