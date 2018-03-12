@@ -2,3 +2,5 @@ bin/
 obj/
 
 all.code-workspace
+Azure.userprefs
+Microsoft.Azure.IotHub.Relay/Properties/PublishProfiles/IotHubRelay - Web Deploy.pubxml.user
